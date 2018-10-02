@@ -22,13 +22,14 @@ print(paste("Number of clusters:", num_clusters))
 print(paste("Sparse parameter:", sparse_parameter))
 #file_import_terms <- "imports_malware.csv"
 
-imports <- read.csv(file_import_terms, header = FALSE)
+imports <- read.csv(file_import_terms, header = TRUE)
 
 corp <- Corpus(DataframeSource(imports))
 tdm <- TermDocumentMatrix(corp)
 
-#num_clusters <- 20
-#sparse_parameter <- 0.98
+# Comment out to allow for command line params
+num_clusters <- 20
+sparse_parameter <- 0.98
 
 tdm_no_sparse <- removeSparseTerms(tdm, sparse_parameter)
 tdm_matrix <- as.matrix(tdm_no_sparse)
