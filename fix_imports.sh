@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
+# Pass csv file as parameter to script
 
 newfile=`echo $1 | cut -d '.' -f 1`_header.csv
 echo "Writing to $newfile"
-echo -e "doc_id,text" > $newfile
+echo "doc_id,text" > $newfile
 count=0
-while read p
+while read line
 do
-    echo "$count,$p" >> $newfile
+    echo "$count,$line" >> $newfile
     count=$(($count+1))
 done <$1
 

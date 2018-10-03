@@ -17,6 +17,14 @@ sparse_parameter = args[3]
 sparse_parameter <- as.numeric(sparse_parameter)
 num_clusters <- as.numeric(num_clusters)
 
+# Use default values if no command line params
+if (is.na(sparse_parameter)) {
+  sparse_parameter <- 0.98
+}
+if (is.na(num_clusters)) {
+  num_clusters <- 20
+}
+
 print(paste("File containing import terms:", file_import_terms))
 print(paste("Number of clusters:", num_clusters))
 print(paste("Sparse parameter:", sparse_parameter))
@@ -26,10 +34,6 @@ imports <- read.csv(file_import_terms, header = TRUE)
 
 corp <- Corpus(DataframeSource(imports))
 tdm <- TermDocumentMatrix(corp)
-
-# Comment out to allow for command line params
-num_clusters <- 20
-sparse_parameter <- 0.98
 
 tdm_no_sparse <- removeSparseTerms(tdm, sparse_parameter)
 tdm_matrix <- as.matrix(tdm_no_sparse)
