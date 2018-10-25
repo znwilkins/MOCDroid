@@ -364,7 +364,7 @@ public class MOCDroid extends Problem implements SimpleProblemForm {
 			List<String> listDatasetMalware = Files.readAllLines(Paths.get(fileDatasetMalware), StandardCharsets.UTF_8);
 			List<String> listDatasetBenignware = Files.readAllLines(Paths.get(fileDatasetBenignware), StandardCharsets.UTF_8);
 			String[] fileDatasetMalwareLines = listDatasetMalware.toArray(new String[listDatasetMalware.size()]);
-			String[] fileDatasetBenignwareLines = listDatasetBenignware.toArray(new String[listDatasetMalware.size()]);
+			String[] fileDatasetBenignwareLines = listDatasetBenignware.toArray(new String[listDatasetBenignware.size()]);
 
 			ArrayList<Example> examplesMalware = new ArrayList<Example>();
 			for (String line : fileDatasetMalwareLines){
